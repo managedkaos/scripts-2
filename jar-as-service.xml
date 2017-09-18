@@ -1,0 +1,13 @@
+<!--
+wrapper exe repo
+https://github.com/kohsuke/winsw
+-->
+<service>
+    <id>appx</id>
+    <name>appx</name>
+    <description>appx</description>
+    <workingdirectory>%BASE%\</workingdirectory>
+    <logpath>%BASE%\logs</logpath>
+    <executable>java</executable>
+    <arguments>-jar filename.jar args</arguments>
+</service>
