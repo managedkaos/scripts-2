@@ -2,8 +2,17 @@
 <project name="demo" default="default" basedir=".">
     <description>Builds, tests, and runs the project demo.</description>
     <import file="nbproject/build-impl.xml"/>
-    
+	
     <!--custom code-->
+    <path id="catalina-ant-classpath">
+        <fileset dir="lib">
+            <include name="catalina-ant.jar"/>
+            <include name="tomcat-coyote.jar"/>
+            <include name="tomcat-util.jar"/>
+            <include name="tomcat-juli.jar"/>
+        </fileset>
+    </path>
+    
     <property file="build.properties" />
     <property name="war-file-name" value="${project-cxt}.war" />
     <property name="source-directory" value="src" />
@@ -17,8 +26,8 @@
     </tstamp>
     <property name="build-directory" value="build" />
 
-    <taskdef name="deploy" classname="org.apache.catalina.ant.DeployTask" />
-    <taskdef name="undeploy" classname="org.apache.catalina.ant.UndeployTask" />
+    <taskdef name="deploy" classname="org.apache.catalina.ant.DeployTask" classpathref="catalina-ant-classpath"/>
+    <taskdef name="undeploy" classname="org.apache.catalina.ant.UndeployTask" classpathref="catalina-ant-classpath"/>
 	
     <target name="undeploy" description="undeploy from tomcat">
         <undeploy 
