@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="demo" default="default" basedir=".">
+    <description>Builds, tests, and runs the project demo.</description>
+    <import file="nbproject/build-impl.xml"/>
+    
+    <!--custom code-->
+    <property file="build.properties" />
+    <property name="war-file-name" value="${project-cxt}.war" />
+    <property name="source-directory" value="src" />
+    <property name="classes-directory" value="bin" />
+    <property name="web-directory" value="web" />
+    <property name="web-xml-file" value="web/WEB-INF/web.xml" />
+    <tstamp prefix="build-info">
+        <format property="current-date" pattern="d-MMMM-yyyy" locale="en" />
+        <format property="current-time" pattern="hh:mm:ss a z" locale="en" />
+        <format property="year-month-day" pattern="yyyy-MM-dd" locale="en" />
+    </tstamp>
+    <property name="build-directory" value="build" />
+
+    <taskdef name="deploy" classname="org.apache.catalina.ant.DeployTask" />
+    <taskdef name="undeploy" classname="org.apache.catalina.ant.UndeployTask" />
+	
+    <target name="undeploy" description="undeploy from tomcat">
+        <undeploy 
+            failonerror="no"
+            url="${tomcat-manager-url}"
+            username="${tomcat-manager-username}"
+            password="${tomcat-manager-password}"
+            path="/${project-cxt}"
+        />
+    </target>
+
+    <target name="deploy" description="deploy to tomcat">
+        <echo>deploying from client</echo>
+        <deploy 
+            url="${tomcat-manager-url}"
+            username="${tomcat-manager-username}"
+            password="${tomcat-manager-password}"
+            path="/${project-cxt}"
+            war="file:${dist.dir}/${war-file-name}"
+        />
+    </target>
+
+    <target name="build-and-deploy" depends="do-dist,undeploy,deploy" />
+</project>
+
+<!--
+#build.properties file
+project-cxt=demo
+builder=neo
+tomcat-manager-url=http://localhost:8090/manager/text
+tomcat-manager-username=username
+tomcat-manager-password=password
+-->
+
+<!--
+#command > ant build-and-deploy
+-->
