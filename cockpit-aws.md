@@ -7,6 +7,7 @@
 [WebService]
 Origins = https://aws.foobars.in
 AllowUnencrypted = true
+UrlRoot = /cockpit/
 ```
 
 /etc/systemd/system/cockpit.socket.d/listen.conf
@@ -14,7 +15,7 @@ AllowUnencrypted = true
 [Socket]
 ListenStream=
 ListenStream=443
-ListenStream=80
+ListenStream=8085
 ```
 
 Reload Cockpit
