@@ -1,6 +1,7 @@
 # cockpit-project
 [http://cockpit-project.org/](http://cockpit-project.org/)
 
+
 /etc/cockpit/cockpit.conf
 ```
 [WebService]
