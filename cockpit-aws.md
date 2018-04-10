@@ -7,7 +7,7 @@
 [WebService]
 Origins = https://aws.foobars.in
 AllowUnencrypted = true
-UrlRoot = /cockpit/
+UrlRoot = /console/
 ```
 
 /etc/systemd/system/cockpit.socket.d/listen.conf
