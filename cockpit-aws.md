@@ -16,3 +16,9 @@ ListenStream=
 ListenStream=443
 ListenStream=80
 ```
+
+Reload Cockpit
+```
+sudo systemctl daemon-reload
+sudo systemctl restart cockpit.socket
+```
